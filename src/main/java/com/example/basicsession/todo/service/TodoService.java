@@ -1,9 +1,6 @@
 package com.example.basicsession.todo.service;
 
-import com.example.basicsession.todo.dto.TodoResponseDto;
-import com.example.basicsession.todo.dto.TodoSaveRequestDto;
-import com.example.basicsession.todo.dto.TodoSaveResponseDto;
-import com.example.basicsession.todo.dto.TodoUpdateResponseDto;
+import com.example.basicsession.todo.dto.*;
 import com.example.basicsession.todo.entity.Todo;
 import com.example.basicsession.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,7 +51,7 @@ public class TodoService {
     }
 
     @Transactional
-    public TodoUpdateResponseDto update(Long todoId, TodoSaveRequestDto dto) {
+    public TodoUpdateResponseDto update(Long todoId, TodoUpdateRequestDto dto) {
         Todo todo = todoRepository.findById(todoId).orElseThrow(
                 () -> new IllegalStateException("그런 todo는 없다.")
         );
@@ -63,5 +60,13 @@ public class TodoService {
                 todo.getId(),
                 todo.getContent()
         );
+    }
+
+    @Transactional
+    public void deleteById(Long todoId) {
+        if (!todoRepository.existsById(todoId)) {
+            throw new IllegalStateException("존재하지 않는 todo.");
+        }
+        todoRepository.deleteById(todoId);
     }
 }
