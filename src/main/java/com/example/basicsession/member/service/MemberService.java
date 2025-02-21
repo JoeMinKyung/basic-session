@@ -18,17 +18,6 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Transactional
-    public MemberSaveResponseDto save(MemberSaveRequestDto dto) {
-
-        Member member = new Member(dto.getEmail());
-        Member savedMember = memberRepository.save(member);
-        return new MemberSaveResponseDto(
-                savedMember.getId(),
-                savedMember.getEmail()
-        );
-    }
-
     @Transactional(readOnly = true)
     public List<MemberResponseDto> findAll() {
         List<Member> members = memberRepository.findAll();
