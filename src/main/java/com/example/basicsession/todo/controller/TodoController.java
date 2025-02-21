@@ -3,6 +3,7 @@ package com.example.basicsession.todo.controller;
 import com.example.basicsession.todo.dto.TodoResponseDto;
 import com.example.basicsession.todo.dto.TodoSaveRequestDto;
 import com.example.basicsession.todo.dto.TodoSaveResponseDto;
+import com.example.basicsession.todo.dto.TodoUpdateResponseDto;
 import com.example.basicsession.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +30,10 @@ public class TodoController {
     @GetMapping("/todos/{todoId}")
     public ResponseEntity<TodoResponseDto> getOne(@PathVariable Long todoId) {
         return ResponseEntity.ok(todoService.findById(todoId));
+    }
+
+    @PutMapping
+    public ResponseEntity<TodoUpdateResponseDto> update(@PathVariable Long todoId, @RequestBody TodoSaveRequestDto dto) {
+        return ResponseEntity.ok(todoService.update(todoId, dto));
     }
 }

@@ -3,6 +3,7 @@ package com.example.basicsession.todo.service;
 import com.example.basicsession.todo.dto.TodoResponseDto;
 import com.example.basicsession.todo.dto.TodoSaveRequestDto;
 import com.example.basicsession.todo.dto.TodoSaveResponseDto;
+import com.example.basicsession.todo.dto.TodoUpdateResponseDto;
 import com.example.basicsession.todo.entity.Todo;
 import com.example.basicsession.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +48,18 @@ public class TodoService {
                 () -> new IllegalStateException("그런 todo는 없다.")
         );
         return new TodoResponseDto(
+                todo.getId(),
+                todo.getContent()
+        );
+    }
+
+    @Transactional
+    public TodoUpdateResponseDto update(Long todoId, TodoSaveRequestDto dto) {
+        Todo todo = todoRepository.findById(todoId).orElseThrow(
+                () -> new IllegalStateException("그런 todo는 없다.")
+        );
+        todo.update(dto.getContent());
+        return new TodoUpdateResponseDto(
                 todo.getId(),
                 todo.getContent()
         );
