@@ -17,10 +17,10 @@ public class TodoController {
 
     @PostMapping("/todos")
     public ResponseEntity<TodoSaveResponseDto> save(
-            @SessionAttribute(name = Const.LOGIN_USER) Long userId,
+            @SessionAttribute(name = Const.LOGIN_USER) Long memberId,
             @RequestBody TodoSaveRequestDto dto
     ) {
-        return ResponseEntity.ok(todoService.save(userId, dto));
+        return ResponseEntity.ok(todoService.save(memberId, dto));
     }
 
     @GetMapping("/todos")
@@ -35,16 +35,16 @@ public class TodoController {
 
     @PutMapping
     public ResponseEntity<TodoUpdateResponseDto> update(
-            @SessionAttribute(name = Const.LOGIN_USER) Long userId,
+            @SessionAttribute(name = Const.LOGIN_USER) Long memberId,
             @PathVariable Long todoId,
             @RequestBody TodoUpdateRequestDto dto
     ) {
-        return ResponseEntity.ok(todoService.update(todoId, dto));
+        return ResponseEntity.ok(todoService.update(memberId, todoId, dto));
     }
 
     @DeleteMapping("/todos/{todoId}")
     public void delete(
-            @SessionAttribute(name = Const.LOGIN_USER) Long userId,
+            @SessionAttribute(name = Const.LOGIN_USER) Long memberId,
             @PathVariable Long todoId
     ) {
         todoService.deleteById(todoId);
