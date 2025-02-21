@@ -1,5 +1,7 @@
 package com.example.basicsession.todo.service;
 
+import com.example.basicsession.member.entity.Member;
+import com.example.basicsession.member.repository.MemberRepository;
 import com.example.basicsession.todo.dto.*;
 import com.example.basicsession.todo.entity.Todo;
 import com.example.basicsession.todo.repository.TodoRepository;
@@ -15,14 +17,25 @@ import java.util.List;
 public class TodoService {
 
     private final TodoRepository todoRepository;
+    private final MemberRepository memberRepository;
 
     @Transactional
-    public TodoSaveResponseDto save(TodoSaveRequestDto dto) {
-        Todo todo = new Todo(dto.getContent());
+    public TodoSaveResponseDto save(Long memberId, TodoSaveRequestDto dto) {
+
+        Member member = memberRepository.findById(memberId).orElseThrow(
+                () -> new IllegalStateException("Member not found")
+        );
+
+        Todo todo = new Todo(
+                dto.getContent(),
+                member
+        );
         Todo savedTodo = todoRepository.save(todo);
         return new TodoSaveResponseDto(
                 savedTodo.getId(),
-                savedTodo.getContent()
+                savedTodo.getContent(),
+                member.getId(),
+                member.getEmail()
         );
     }
 
