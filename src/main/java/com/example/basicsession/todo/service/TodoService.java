@@ -40,4 +40,15 @@ public class TodoService {
         }
         return dtos;
     }
+
+    @Transactional(readOnly = true)
+    public TodoResponseDto findById(Long todoId) {
+        Todo todo = todoRepository.findById(todoId).orElseThrow(
+                () -> new IllegalStateException("그런 todo는 없다.")
+        );
+        return new TodoResponseDto(
+                todo.getId(),
+                todo.getContent()
+        );
+    }
 }
