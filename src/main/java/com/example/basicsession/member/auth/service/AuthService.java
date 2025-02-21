@@ -1,7 +1,8 @@
 package com.example.basicsession.member.auth.service;
 
+import com.example.basicsession.member.auth.dto.AuthLoginRequestDto;
+import com.example.basicsession.member.auth.dto.AuthLoginResponseDto;
 import com.example.basicsession.member.auth.dto.AuthSignUpRequestDto;
-import com.example.basicsession.member.dto.MemberSaveResponseDto;
 import com.example.basicsession.member.entity.Member;
 import com.example.basicsession.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,5 +19,12 @@ public class AuthService {
     public void signup(AuthSignUpRequestDto dto) {
         Member member = new Member(dto.getEmail());
         memberRepository.save(member);
+    }
+
+    public AuthLoginResponseDto login(AuthLoginRequestDto dto) {
+        Member member = memberRepository.findByEmail(dto.getEmail()).orElseThrow(
+                () -> new IllegalStateException("Email not found")
+        );
+        return new AuthLoginResponseDto(member.getId());
     }
 }
