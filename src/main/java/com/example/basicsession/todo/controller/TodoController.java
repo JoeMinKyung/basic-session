@@ -47,6 +47,6 @@ public class TodoController {
             @SessionAttribute(name = Const.LOGIN_USER) Long memberId,
             @PathVariable Long todoId
     ) {
-        todoService.deleteById(todoId);
+        todoService.deleteById(memberId, todoId);
     }
 }

@@ -86,10 +86,19 @@ public class TodoService {
     }
 
     @Transactional
-    public void deleteById(Long todoId) {
-        if (!todoRepository.existsById(todoId)) {
-            throw new IllegalStateException("존재하지 않는 todo.");
+    public void deleteById(Long memberId, Long todoId) {
+        Member member = memberRepository.findById(memberId).orElseThrow(
+                () -> new IllegalStateException("Member not found")
+        );
+
+        Todo todo = todoRepository.findById(todoId).orElseThrow(
+                () -> new IllegalStateException("그런 todo는 없다.")
+        );
+
+        if (!todo.getMember().getId().equals(member.getId())) {
+            throw new IllegalStateException("Todo 작성자가 아닙니다.");
         }
+
         todoRepository.deleteById(todoId);
     }
 }
