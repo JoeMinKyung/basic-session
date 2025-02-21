@@ -37,7 +37,9 @@ public class MemberController {
     }
 
     @DeleteMapping("/members/{memberId}")
-    public void delete(@PathVariable Long memberId) {
+    public void delete(
+            @SessionAttribute(name = Const.LOGIN_USER) Long memberId
+    ) {
         memberService.deleteById(memberId);
     }
 }
