@@ -1,14 +1,13 @@
-package com.example.basicsession.member.auth.controller;
+package com.example.basicsession.auth.controller;
 
-import com.example.basicsession.member.auth.dto.AuthLoginRequestDto;
-import com.example.basicsession.member.auth.dto.AuthLoginResponseDto;
-import com.example.basicsession.member.auth.dto.AuthSignUpRequestDto;
-import com.example.basicsession.member.auth.service.AuthService;
-import com.example.basicsession.member.common.consts.Const;
+import com.example.basicsession.auth.dto.AuthLoginRequestDto;
+import com.example.basicsession.auth.dto.AuthLoginResponseDto;
+import com.example.basicsession.auth.dto.AuthSignUpRequestDto;
+import com.example.basicsession.auth.service.AuthService;
+import com.example.basicsession.common.consts.Const;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

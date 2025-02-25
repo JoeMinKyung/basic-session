@@ -1,4 +1,4 @@
-package com.example.basicsession.member.auth.dto;
+package com.example.basicsession.auth.dto;
 
 import lombok.Getter;
 

@@ -1,9 +1,7 @@
 package com.example.basicsession.member.controller;
 
-import com.example.basicsession.member.common.consts.Const;
+import com.example.basicsession.common.consts.Const;
 import com.example.basicsession.member.dto.MemberResponseDto;
-import com.example.basicsession.member.dto.MemberSaveRequestDto;
-import com.example.basicsession.member.dto.MemberSaveResponseDto;
 import com.example.basicsession.member.dto.MemberUpdateRequestDto;
 import com.example.basicsession.member.service.MemberService;
 import lombok.RequiredArgsConstructor;

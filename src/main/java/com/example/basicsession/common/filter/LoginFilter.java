@@ -1,6 +1,6 @@
-package com.example.basicsession.member.common.filter;
+package com.example.basicsession.common.filter;
 
-import com.example.basicsession.member.common.consts.Const;
+import com.example.basicsession.common.consts.Const;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

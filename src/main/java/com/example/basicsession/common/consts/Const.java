@@ -1,4 +1,4 @@
-package com.example.basicsession.member.common.consts;
+package com.example.basicsession.common.consts;
 
 public abstract class Const {
 

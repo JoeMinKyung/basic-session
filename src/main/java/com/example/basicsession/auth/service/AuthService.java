@@ -1,8 +1,8 @@
-package com.example.basicsession.member.auth.service;
+package com.example.basicsession.auth.service;
 
-import com.example.basicsession.member.auth.dto.AuthLoginRequestDto;
-import com.example.basicsession.member.auth.dto.AuthLoginResponseDto;
-import com.example.basicsession.member.auth.dto.AuthSignUpRequestDto;
+import com.example.basicsession.auth.dto.AuthLoginRequestDto;
+import com.example.basicsession.auth.dto.AuthLoginResponseDto;
+import com.example.basicsession.auth.dto.AuthSignUpRequestDto;
 import com.example.basicsession.member.entity.Member;
 import com.example.basicsession.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;

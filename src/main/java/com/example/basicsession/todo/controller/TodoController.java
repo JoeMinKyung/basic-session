@@ -1,6 +1,6 @@
 package com.example.basicsession.todo.controller;
 
-import com.example.basicsession.member.common.consts.Const;
+import com.example.basicsession.common.consts.Const;
 import com.example.basicsession.todo.dto.*;
 import com.example.basicsession.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;

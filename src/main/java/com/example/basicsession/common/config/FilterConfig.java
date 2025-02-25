@@ -1,6 +1,6 @@
-package com.example.basicsession.member.common.config;
+package com.example.basicsession.common.config;
 
-import com.example.basicsession.member.common.filter.LoginFilter;
+import com.example.basicsession.common.filter.LoginFilter;
 import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
